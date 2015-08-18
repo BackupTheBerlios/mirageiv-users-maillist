@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] [PATCH] Customize Exit shortcut
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20%5BPATCH%5D%20Customize%20Exit%20shortcut&In-Reply-To=%3C94f6eb530910111103v5c5851f8qfe564ccce8c4a887%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] [PATCH] Customize Exit shortcut</H1>
+    <B>Pichouss</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20%5BPATCH%5D%20Customize%20Exit%20shortcut&In-Reply-To=%3C94f6eb530910111103v5c5851f8qfe564ccce8c4a887%40mail.gmail.com%3E"
+       TITLE="[Mirageiv-users] [PATCH] Customize Exit shortcut">pichouss at pichouss.com
+       </A><BR>
+    <I>Sun Oct 11 20:03:13 CEST 2009</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hy!
+First of all, thanks for this great app!
+
+light and quick with all the functionalities I need, it is exactly what I
+need
+
+... actually, not &quot;exactly&quot;, I just miss one customization.
+I want to be able to exit Mirage just by pressing &quot;Escape&quot; key.
+So I made some modifications to do that, (maybe it could be useful for
+someone else...).
+
+Let explain myself :
+
+First problem : 'Escape' key cannot be used for 'custom actions' because
+it's reserved for 'Exit Full Screen', but it is also possible to exit
+fullscreen by using 'F11' key.
+So problem easily solved : I removed this 'Escape' shortcut so it is now
+available for use in 'custom actions'
+
+Second problem : what command to use for exiting mirage when I want to
+define my custom action?
+I could use &quot;killall mirage&quot; but it's really a dirty solution!
+So I created an '[EXIT]' operation taking example on '[PREV]' and '[NEXT]'
+operations
+
+I can now create a custom action to quit mirage using Escape key :)
+
+But you will say me &quot;and what about old mirage users that are used to use
+Escape to exit fullscreen?'
+Ok, just define a custom action to do this!
+Crap, there's no 'operation' to do this...
+so I also created '[EXIT_FULLSCREEN]' operation so we can now create a
+custom action to exit fullscreen
+And I created it as default like 'open in GIMP' for example, so there's no
+visible change to the default built application.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mirageiv-users/attachments/20091011/a96a16ca/attachment.html">https://lists.berlios.de/pipermail/mirageiv-users/attachments/20091011/a96a16ca/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: custom_exit.patch
+Type: text/x-patch
+Size: 5532 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mirageiv-users/attachments/20091011/a96a16ca/attachment.bin">https://lists.berlios.de/pipermail/mirageiv-users/attachments/20091011/a96a16ca/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

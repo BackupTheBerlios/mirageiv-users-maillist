@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] Define Shortcut Commands with Arguments
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Define%20Shortcut%20Commands%20with%20Arguments&In-Reply-To=%3C200608110856.38799.tguettler%40tbz-pariv.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000015.html">
+   <LINK REL="Next"  HREF="000018.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] Define Shortcut Commands with Arguments</H1>
+    <B>Thomas G&#252;ttler</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Define%20Shortcut%20Commands%20with%20Arguments&In-Reply-To=%3C200608110856.38799.tguettler%40tbz-pariv.de%3E"
+       TITLE="[Mirageiv-users] Define Shortcut Commands with Arguments">tguettler at tbz-pariv.de
+       </A><BR>
+    <I>Fri Aug 11 08:56:38 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000015.html">[Mirageiv-users] Define Shortcut Commands with Arguments
+</A></li>
+        <LI>Next message: <A HREF="000018.html">[Mirageiv-users] Define Shortcut Commands with Arguments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Scott and others,
+
+Am Freitag, 11. August 2006 03:59 schrieb Scott Horowitz:
+&gt;<i> On 8/8/06, Thomas G&#252;ttler &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">hv at tbz-pariv.de</A>&gt; wrote:
+</I>&gt;<i> Hi Thomas, thanks for the patch, very interesting. I'm trying to
+</I>&gt;<i> decide if the GUI should provide a way to implement 'custom actions'
+</I>&gt;<i> like these or if they should strictly remain commandline arguments (or
+</I>&gt;<i> both).
+</I>
+I had this idea some weeks ago. I had a look at the C code
+of convert (ImageMagick), but I guess, it would have needed
+several days to patch it this way (at least for me).
+
+For me, command line arguments are enough.
+
+&gt;<i> It would be interesting to have a bunch of special keywords, 
+</I>&gt;<i> like your IMAGE and NEXT, that a user could work with in the
+</I>&gt;<i> preferences. For example, the current Edit &gt; Open in Editor could be a
+</I>&gt;<i> default custom action that comes with Mirage (i.e. /usr/bin/gimp
+</I>&gt;<i> IMAGE).
+</I>
+Yes, &quot;EDIT&quot; could be a new command.
+
+&gt;<i> &gt; If I klick on &quot;About&quot; I get this:
+</I>&gt;<i> &gt;  Traceback (most recent call last):
+</I>&gt;<i> &gt;   File
+</I>&gt;<i> &gt; &quot;/home/tguettler/download/mirage/lib64/python2.4/site-packages/mirage.py&quot;
+</I>&gt;<i> &gt;, line 1314, in show_about self.about_dialog.set_logo(icon_pixbuf)
+</I>&gt;<i> &gt; UnboundLocalError: local variable 'icon_pixbuf' referenced before
+</I>&gt;<i> &gt; assignment
+</I>&gt;<i>
+</I>&gt;<i> Can you tell me where mirage_large.png is on your system? I'll fix it
+</I>&gt;<i> so it doesn't give an error if the file can't be found though..
+</I>
+/home/tguettler/download/mirage/share/pixmaps/mirage_large.png
+
+I installed with --prefix=$HOME/download/mirage
+
+You could N*os.path.dirname() of __file__ of lib/site-packages..../mirage.py 
+to find this.
+
+
+&gt;<i>
+</I>&gt;<i> &gt; I think &quot;$HeadURL$&quot; should be in mirage.py (and other sourcefiles)
+</I>&gt;<i>
+</I>&gt;<i> Sorry, I have no idea what this means ;-) Can you please explain?
+</I>
+$Id$ and $HeadURL$ are SVN keywords.
+
+<A HREF="http://svnbook.red-bean.com/nightly/en/svn.advanced.props.html#svn.advanced.props.special.keywords">http://svnbook.red-bean.com/nightly/en/svn.advanced.props.html#svn.advanced.props.special.keywords</A>
+
+$Id$ --&gt; $Id: calc.c 148 2002-07-28 21:30:43Z sally $
+$HeadURL$ --&gt; $HeadURL: <A HREF="http://svn.collab.net/repos/trunk/README">http://svn.collab.net/repos/trunk/README</A> $
+
+ Thomas
+
+-- 
+Thomas G&#252;ttler, <A HREF="http://www.tbz-pariv.de/">http://www.tbz-pariv.de/</A> 
+Bernsdorfer Str. 210-212, 09126 Chemnitz, Tel.: 0371/5347-917
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000015.html">[Mirageiv-users] Define Shortcut Commands with Arguments
+</A></li>
+	<LI>Next message: <A HREF="000018.html">[Mirageiv-users] Define Shortcut Commands with Arguments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

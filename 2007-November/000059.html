@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] xmouse exception: Cannot open display
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20xmouse%20exception%3A%20Cannot%20open%20display&In-Reply-To=%3C20071127150459.GG6768%40mosch.failure.del%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000058.html">
+   <LINK REL="Next"  HREF="000060.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] xmouse exception: Cannot open display</H1>
+    <B>mmassonnet at gmail.com</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20xmouse%20exception%3A%20Cannot%20open%20display&In-Reply-To=%3C20071127150459.GG6768%40mosch.failure.del%3E"
+       TITLE="[Mirageiv-users] xmouse exception: Cannot open display">mmassonnet at gmail.com
+       </A><BR>
+    <I>Tue Nov 27 16:04:59 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000058.html">[Mirageiv-users] xmouse exception: Cannot open display
+</A></li>
+        <LI>Next message: <A HREF="000060.html">[Mirageiv-users] Question about mirage thumbnailing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Nov 27, 2007 at 07:27:46AM -0700, Scott Horowitz wrote:
+&gt;<i> On Nov 27, 2007 1:30 AM,  &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">mmassonnet at gmail.com</A>&gt; wrote:
+</I>&gt;<i> &gt; On Mon, Nov 26, 2007 at 08:49:16PM -0700, Scott Horowitz wrote:
+</I>&gt;<i> &gt; It's working now, I had to set display to NULL otherwise it segfaulted
+</I>&gt;<i> &gt; in a printf.
+</I>&gt;<i> 
+</I>&gt;<i> Awesome, thanks Mike! Committed. I don't know any C and hacked that
+</I>&gt;<i> together as you can tell. Although I wonder why it originally worked
+</I>&gt;<i> for myself and someone else, but not you..
+</I>
+In my case the pointer foo pointed to an unclean area on the RAM.  I bet
+in your case in pointed to a clean area, e.g. the content started with
+'\0' ;-)  In that case it behaved like passing NULL to XOpenDisplay().
+
+I don't know what to say about PyArg_ParseTuple().
+
+&gt;<i> Scott
+</I>
+mike
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000058.html">[Mirageiv-users] xmouse exception: Cannot open display
+</A></li>
+	<LI>Next message: <A HREF="000060.html">[Mirageiv-users] Question about mirage thumbnailing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

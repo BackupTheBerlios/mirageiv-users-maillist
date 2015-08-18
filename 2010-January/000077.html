@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] exception error with large screenshow
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20exception%20error%20with%20large%20screenshow&In-Reply-To=%3C4B411804.3050905%40skynet.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000078.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] exception error with large screenshow</H1>
+    <B>Jan Vereecke</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20exception%20error%20with%20large%20screenshow&In-Reply-To=%3C4B411804.3050905%40skynet.be%3E"
+       TITLE="[Mirageiv-users] exception error with large screenshow">vereecke.jan at skynet.be
+       </A><BR>
+    <I>Sun Jan  3 23:19:48 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000078.html">[Mirageiv-users] exception error with large screenshow
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#77">[ date ]</a>
+              <a href="thread.html#77">[ thread ]</a>
+              <a href="subject.html#77">[ subject ]</a>
+              <a href="author.html#77">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I run mirage -R  /mnt/Fotos and then immediately start a slideshow by 
+pressing F5 then regularly I get an exception:
+
+Traceback (most recent call last):
+  File &quot;/usr/lib/python2.6/site-packages/mirage.py&quot;, line 3532, in 
+goto_random_image
+    self.goto_image(&quot;RANDOM&quot;, action)
+  File &quot;/usr/lib/python2.6/site-packages/mirage.py&quot;, line 3637, in 
+goto_image
+    while self.randomlist[j]:
+IndexError: list index out of range
+
+After this exception, self.timer_delay is not reset, so the slideshow stops.
+
+The relevant code portion is:
+   if location == &quot;RANDOM&quot;:
+                                # Find random image that hasn't already 
+been chosen:
+                                j = random.randint(0, 
+len(self.image_list)-1)
+                                while self.randomlist[j]:
+                                        j = random.randint(0, 
+len(self.image_list)-1)
+                                self.curr_img_in_list = j
+
+
+The reason of this error is that the number of pictures in the folders 
+is over 6000  and is building in the background while the slideshow is 
+already started.
+
+self.randomlist is initialized at a moment when self.imagelist contains 
+e.g. 500 items, and is thus only 500 items long.
+a bit later the code above  is reached, but meanwhile self.imagelist has 
+grown to e.g. 3000 elements, so j can be higher than the maximum index 
+of self.randomlist.
+
+My proposed solution is to let randomlist grow as needed
+
+                     if location == &quot;RANDOM&quot;:
+                                # Find random image that hasn't already 
+been chosen:
+                                j = random.randint(0, 
+len(self.image_list)-1)
+                                for i in range(len(self.randomlist), 
+len(self.image_list)): # if image_list has grown in the background, 
+additional randomlist items are needed
+                                        self.randomlist.append(False)
+                                while self.randomlist[j]:
+                                        j = random.randint(0, 
+len(self.image_list)-1)
+                                        for i in 
+range(len(self.randomlist), len(self.image_list)):
+                                                
+self.randomlist.append(False)
+                                self.curr_img_in_list = j
+
+I have had not problem anymore since this change
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000078.html">[Mirageiv-users] exception error with large screenshow
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#77">[ date ]</a>
+              <a href="thread.html#77">[ thread ]</a>
+              <a href="subject.html#77">[ subject ]</a>
+              <a href="author.html#77">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

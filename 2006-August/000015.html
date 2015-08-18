@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] Define Shortcut Commands with Arguments
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Define%20Shortcut%20Commands%20with%20Arguments&In-Reply-To=%3C35a6f8e30608101859i498e326bleebc82ff6d894b74%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000014.html">
+   <LINK REL="Next"  HREF="000016.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] Define Shortcut Commands with Arguments</H1>
+    <B>Scott Horowitz</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Define%20Shortcut%20Commands%20with%20Arguments&In-Reply-To=%3C35a6f8e30608101859i498e326bleebc82ff6d894b74%40mail.gmail.com%3E"
+       TITLE="[Mirageiv-users] Define Shortcut Commands with Arguments">stonecrest at gmail.com
+       </A><BR>
+    <I>Fri Aug 11 03:59:37 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000014.html">[Mirageiv-users] Define Shortcut Commands with Arguments
+</A></li>
+        <LI>Next message: <A HREF="000016.html">[Mirageiv-users] Define Shortcut Commands with Arguments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 8/8/06, Thomas G&#252;ttler &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">hv at tbz-pariv.de</A>&gt; wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I patched mirage.py, so that you can define keyborard
+</I>&gt;<i> shortcuts
+</I>&gt;<i> on the command line:
+</I>&gt;<i>
+</I>&gt;<i> There are two new command parameter:
+</I>&gt;<i> -c, --command        'k: mycommand IMAGE' Execute
+</I>&gt;<i>                     'mycommand' if you hit key 'k'&quot;
+</I>&gt;<i>                    'k' can be any ASCII character.
+</I>&gt;<i>                    You can give several -c options
+</I>&gt;<i>                   IMAGE gets replaced with the current
+</I>&gt;<i>                    filename
+</I>&gt;<i>                  If the command contains the string
+</I>&gt;<i>                  NEXT, the next
+</I>&gt;<i>                 image gets loaded after the command
+</I>&gt;<i>
+</I>&gt;<i> -o, --onload         'mycommand IMAGE'
+</I>&gt;<i>         Execute 'mycommand',when the image gets loaded
+</I>
+Hi Thomas, thanks for the patch, very interesting. I'm trying to
+decide if the GUI should provide a way to implement 'custom actions'
+like these or if they should strictly remain commandline arguments (or
+both). It would be interesting to have a bunch of special keywords,
+like your IMAGE and NEXT, that a user could work with in the
+preferences. For example, the current Edit &gt; Open in Editor could be a
+default custom action that comes with Mirage (i.e. /usr/bin/gimp
+IMAGE).
+
+&gt;<i> I tried to add the patch to the berlios page as feature
+</I>&gt;<i> request or as bug report, but a file upload was not
+</I>&gt;<i> possible.
+</I>
+Let me go enable the &quot;patch manager&quot; on berlios ;-)
+
+&gt;<i> mirage.py contains space and tabs mixed. I normalized
+</I>&gt;<i> the code to four spaces. The patch only contains the
+</I>&gt;<i> important changes, but indentation might be wrong.
+</I>&gt;<i> Most Python software uses four spaces.
+</I>
+Yeah, I had noticed this as a quirk of the text editor I was using. I
+just switched, and have fixed it up in svn so that it's all tabs (just
+my preference).
+
+&gt;<i> If I klick on &quot;About&quot; I get this:
+</I>&gt;<i>  Traceback (most recent call last):
+</I>&gt;<i>   File &quot;/home/tguettler/download/mirage/lib64/python2.4/site-packages/mirage.py&quot;, line 1314, in show_about
+</I>&gt;<i>     self.about_dialog.set_logo(icon_pixbuf)
+</I>&gt;<i> UnboundLocalError: local variable 'icon_pixbuf' referenced before assignment
+</I>
+Can you tell me where mirage_large.png is on your system? I'll fix it
+so it doesn't give an error if the file can't be found though..
+
+&gt;<i> I think &quot;$HeadURL$&quot; should be in mirage.py (and other sourcefiles)
+</I>
+Sorry, I have no idea what this means ;-) Can you please explain?
+
+&gt;<i> Thank you for this nice viewer!
+</I>
+Thanks,
+Scott
+
+&gt;<i>
+</I>&gt;<i>  Thomas
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Thomas G&#252;ttler, <A HREF="http://www.tbz-pariv.de/">http://www.tbz-pariv.de/</A>
+</I>&gt;<i> Bernsdorfer Str. 210-212, 09126 Chemnitz, Tel.: 0371/5347-917
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mirageiv-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">Mirageiv-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://bat.berlios.de/mailman/listinfo/mirageiv-users">http://bat.berlios.de/mailman/listinfo/mirageiv-users</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000014.html">[Mirageiv-users] Define Shortcut Commands with Arguments
+</A></li>
+	<LI>Next message: <A HREF="000016.html">[Mirageiv-users] Define Shortcut Commands with Arguments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

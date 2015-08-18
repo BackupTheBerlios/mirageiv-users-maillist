@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] recent files bounds checking bug (w/patch)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20recent%20files%20bounds%20checking%20bug%20%28w/patch%29&In-Reply-To=%3C8C989767DC6E6EA-1164-A2FB%40FWM-M30.sysops.aol.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] recent files bounds checking bug (w/patch)</H1>
+    <B>enderlejs at aol.com</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20recent%20files%20bounds%20checking%20bug%20%28w/patch%29&In-Reply-To=%3C8C989767DC6E6EA-1164-A2FB%40FWM-M30.sysops.aol.com%3E"
+       TITLE="[Mirageiv-users] recent files bounds checking bug (w/patch)">enderlejs at aol.com
+       </A><BR>
+    <I>Sat Jun 30 23:41:03 CEST 2007</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I tried to file a bug report on the berlios site, but for some reason I was unable to access the bug tracker. 
+
+I am using version 0.8.3 as provided by gentoo. The bug can be triggered as follows (for me at least):
+
+## Edit ~/.config/mirage/miragerc thusly:
+
+&lt; num_recent = 5
+_______________
+
+&gt;<i> num_recnet = 0
+</I>
+
+## Then open a folder using this command:
+
+mirage -R ~/images
+
+## Here is the error I get: 
+
+Traceback (most recent call last):
+? File &quot;/usr/bin/mirage&quot;, line 29, in ?
+??? app = mirage.Base()
+? File &quot;/usr/lib/python2.4/site-packages/mirage.py&quot;, line 684, in __init__
+??? self.expand_filelist_and_load_image(args)
+? File &quot;/usr/lib/python2.4/site-packages/mirage.py&quot;, line 3912, in expand_filelist_and_load_image
+??? self.recent_file_add_and_refresh(passed_list)
+? File &quot;/usr/lib/python2.4/site-packages/mirage.py&quot;, line 943, in recent_file_add_and_refresh
+??? self.recentfiles[0] = addlist
+IndexError: list assignment index out of range
+
+
+## This fixes the error:
+
+$ diff mirage.py.old mirage.py
+942,944c942,945
+&lt;?????????????? self.recentfiles[0] = addlist
+&lt;?????????????? self.recentfiles_recurse[0] = self.recursive
+&lt;?????????????? self.refresh_recent_files_menu()
+---
+&gt;<i>?????????????? if len(self.recentfiles) &gt; 0:
+</I>&gt;<i>?????????????????????? self.recentfiles[0] = addlist
+</I>&gt;<i>?????????????????????? self.recentfiles_recurse[0] = self.recursive
+</I>&gt;<i>?????????????????????? self.refresh_recent_files_menu()
+</I>
+scott
+
+________________________________________________________________________
+AOL now offers free email to everyone.  Find out more about what's free from AOL at AOL.com.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mirageiv-users/attachments/20070630/b4541fd5/attachment.html">https://lists.berlios.de/pipermail/mirageiv-users/attachments/20070630/b4541fd5/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

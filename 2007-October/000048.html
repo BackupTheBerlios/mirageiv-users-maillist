@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] Mirage status
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Mirage%20status&In-Reply-To=%3C20071007103901.GF3771%40mosch.failure.del%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000047.html">
+   <LINK REL="Next"  HREF="000049.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] Mirage status</H1>
+    <B>mmassonnet at gmail.com</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Mirage%20status&In-Reply-To=%3C20071007103901.GF3771%40mosch.failure.del%3E"
+       TITLE="[Mirageiv-users] Mirage status">mmassonnet at gmail.com
+       </A><BR>
+    <I>Sun Oct  7 12:39:01 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000047.html">[Mirageiv-users] Mirage status
+</A></li>
+        <LI>Next message: <A HREF="000049.html">[Mirageiv-users] Mirage status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Oct 04, 2007 at 07:25:44PM -0600, Scott Horowitz wrote:
+&gt;<i> Well, it's been entirely too long since I've really worked on Mirage.
+</I>&gt;<i> But I got in the mood tonight and made quite a bit of progress, both
+</I>&gt;<i> bug fixes and feature requests (and applying patches). The biggest
+</I>&gt;<i> feature request is that I committed code for a thumbnail pane viewer.
+</I>&gt;<i> I'd love if anyone could test this. Note that it currently loads all
+</I>&gt;<i> thumbnails after all images are found (meaning that if you open a huge
+</I>&gt;<i> dir with images, thumbnails won't appear until after), but I plan on
+</I>&gt;<i> improving this soon.
+</I>&gt;<i> 
+</I>&gt;<i> I'm hoping to push out a release in the next couple of weeks, although
+</I>&gt;<i> it meant moving some things on my 0.9 todo into the future. If there
+</I>&gt;<i> are any bugs or small requests, speak now.
+</I>
+Here is what I noted:
+
+* Backspace, Space, Right/Left arrow, is a big mess :/  I get throwed
+the next traceback:
+
+	Traceback (most recent call last):
+	  File &quot;./mirage.py&quot;, line 3287, in goto_next_image
+	    self.goto_image(&quot;NEXT&quot;, action)
+	  File &quot;./mirage.py&quot;, line 3400, in goto_image
+	    if valid_int(location):
+	NameError: global name 'valid_int' is not defined
+
+* Opening a big directory takes long.  The only one I know off of hand
+doing really great is exhibit, an E17 image viewer, and of course that
+one comes with all the crazy &#8220;raster&#8221; optimizations ;-)  But of what I
+see, exhibit does something like xmms: read info &quot;on load&quot;.  That is it
+shows the thumbnail while you scroll in the pane and not all-in-one
+shot.  It would be fine to postpone that on TODO for future release?
+
+&gt;<i> Scott
+</I>
+Mike
+
+&gt;<i> P.S. Thumbnail pane: <A HREF="http://mirageiv.berlios.de/images/mirage_thumb.png">http://mirageiv.berlios.de/images/mirage_thumb.png</A> :)
+</I>Looks great indeed :)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000047.html">[Mirageiv-users] Mirage status
+</A></li>
+	<LI>Next message: <A HREF="000049.html">[Mirageiv-users] Mirage status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

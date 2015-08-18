@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] Define Shortcut Commands with Arguments
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Define%20Shortcut%20Commands%20with%20Arguments&In-Reply-To=%3C35a6f8e30608191313s38fb3e29t5b35cf167e802dfe%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000018.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] Define Shortcut Commands with Arguments</H1>
+    <B>Scott Horowitz</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Define%20Shortcut%20Commands%20with%20Arguments&In-Reply-To=%3C35a6f8e30608191313s38fb3e29t5b35cf167e802dfe%40mail.gmail.com%3E"
+       TITLE="[Mirageiv-users] Define Shortcut Commands with Arguments">stonecrest at gmail.com
+       </A><BR>
+    <I>Sat Aug 19 22:13:58 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000018.html">[Mirageiv-users] Define Shortcut Commands with Arguments
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've commited to svn a good chunk of code that should accomodate what
+Thomas wanted, and more. First I implemented Custom Actions, where you
+can create your own actions to do things like generating thumbnails or
+other manipulations via external apps, moving image to other dirs, and
+so on.  Each custom action gets its own shortcut and is saved in the
+config, so there is no need to have commandline arguments as well.
+(Additionally, commandline arguments could present shortcut
+collisions.) Custom actions can also be applied to all images in the
+list, so that you can load a directory of images, for example, and
+create thumbnails for all of them.  Mirage will also update any images
+if they are modified by the custom action.
+
+I've also implemented your --onload, with the slight modification that
+the same syntax available for custom actions is also used for this.
+The full list is available from Edit &gt; Custom Actions.
+
+Let me know if anyone runs into problems, wants additional
+properties/operations available, etc.
+
+Scott
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000018.html">[Mirageiv-users] Define Shortcut Commands with Arguments
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

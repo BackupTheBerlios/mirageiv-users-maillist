@@ -1,0 +1,24 @@
+From grrwlf at gmail.com  Fri Nov 15 10:07:07 2013
+From: grrwlf at gmail.com (Sergey Mironov)
+Date: Fri, 15 Nov 2013 13:07:07 +0400
+Subject: [Mirageiv-users] Improve russian translations
+Message-ID: <CAMOkk_Y3y-GSpW4w=4U=pxq9CvDE5g8tCn2yC2xVa86JK69O1w@mail.gmail.com>
+
+Hi! I've improved the Russian translation a bit. Updated ru.po is in
+the attach. Thanks for the nice project.
+
+Also, I have a feature request: Could you please add a drag-and-drop
+feature so I could drag an image from Mirage (maybe not from it's main
+window, but at least from the thumbnail pane) to, say, social network
+site in browser?
+
+Regards,
+Sergey.
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: ru.po
+Type: text/x-gettext-translation
+Size: 25863 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/mirageiv-users/attachments/20131115/08b0bd07/attachment-0001.bin>
+

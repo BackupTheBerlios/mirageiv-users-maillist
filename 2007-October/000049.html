@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] Mirage status
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Mirage%20status&In-Reply-To=%3C35a6f8e30710070911jcb9acfsbcbf3555e0a30a86%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000048.html">
+   <LINK REL="Next"  HREF="000050.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] Mirage status</H1>
+    <B>Scott Horowitz</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Mirage%20status&In-Reply-To=%3C35a6f8e30710070911jcb9acfsbcbf3555e0a30a86%40mail.gmail.com%3E"
+       TITLE="[Mirageiv-users] Mirage status">stonecrest at gmail.com
+       </A><BR>
+    <I>Sun Oct  7 18:11:55 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000048.html">[Mirageiv-users] Mirage status
+</A></li>
+        <LI>Next message: <A HREF="000050.html">[Mirageiv-users] Mirage status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#49">[ date ]</a>
+              <a href="thread.html#49">[ thread ]</a>
+              <a href="subject.html#49">[ subject ]</a>
+              <a href="author.html#49">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 10/7/07, <A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">mmassonnet at gmail.com</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">mmassonnet at gmail.com</A>&gt; wrote:
+&gt;<i> Here is what I noted:
+</I>&gt;<i>
+</I>&gt;<i> * Backspace, Space, Right/Left arrow, is a big mess :/  I get throwed
+</I>&gt;<i> the next traceback:
+</I>&gt;<i>
+</I>&gt;<i>         Traceback (most recent call last):
+</I>&gt;<i>           File &quot;./mirage.py&quot;, line 3287, in goto_next_image
+</I>&gt;<i>             self.goto_image(&quot;NEXT&quot;, action)
+</I>&gt;<i>           File &quot;./mirage.py&quot;, line 3400, in goto_image
+</I>&gt;<i>             if valid_int(location):
+</I>&gt;<i>         NameError: global name 'valid_int' is not defined
+</I>
+Err.. First, backspace isn't even a keybinding - maybe you changed it?
+And it all works fine here, left, right, up, down, spacebar..
+valid_int is defined at the very bottom of mirage.py. You are using
+the latest revision?
+
+&gt;<i> * Opening a big directory takes long.  The only one I know off of hand
+</I>&gt;<i> doing really great is exhibit, an E17 image viewer, and of course that
+</I>&gt;<i> one comes with all the crazy &quot;raster&quot; optimizations ;-)  But of what I
+</I>&gt;<i> see, exhibit does something like xmms: read info &quot;on load&quot;.  That is it
+</I>&gt;<i> shows the thumbnail while you scroll in the pane and not all-in-one
+</I>&gt;<i> shot.  It would be fine to postpone that on TODO for future release?
+</I>
+Hmm, that's a good idea, I should look into that. Thanks for the feedback.
+
+Scott
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000048.html">[Mirageiv-users] Mirage status
+</A></li>
+	<LI>Next message: <A HREF="000050.html">[Mirageiv-users] Mirage status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#49">[ date ]</a>
+              <a href="thread.html#49">[ thread ]</a>
+              <a href="subject.html#49">[ subject ]</a>
+              <a href="author.html#49">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

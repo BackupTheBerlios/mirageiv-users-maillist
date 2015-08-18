@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] exception error with large screenshow
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20exception%20error%20with%20large%20screenshow&In-Reply-To=%3C4B4233D3.4040406%40skynet.be%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000077.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] exception error with large screenshow</H1>
+    <B>Jan Vereecke</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20exception%20error%20with%20large%20screenshow&In-Reply-To=%3C4B4233D3.4040406%40skynet.be%3E"
+       TITLE="[Mirageiv-users] exception error with large screenshow">vereecke.jan at skynet.be
+       </A><BR>
+    <I>Mon Jan  4 19:30:43 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000077.html">[Mirageiv-users] exception error with large screenshow
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#78">[ date ]</a>
+              <a href="thread.html#78">[ thread ]</a>
+              <a href="subject.html#78">[ subject ]</a>
+              <a href="author.html#78">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>One more improvement: relying on the function random within the loop 
+does not guarantee the loop to finish within a certain time. E.g. for 
+6000 pictures, looking for the last unseen picture, ther is a 1% change 
+that it requires more than 27000 iterations. In one in 20 cases, it will 
+take more than 18000 iterations.
+
+I changed the loop to simply sequentially check the randomlist with a 
+random starting point.
+
+                        if location == &quot;RANDOM&quot;:
+                                # Find random image that hasn't already 
+been chosen:
+                                j = random.randint(0, 
+len(self.image_list)-1)
+                                for i in range(len(self.randomlist), 
+len(self.image_list)): # if image_list has grown in the background, add 
+additional randomlist items
+                                        self.randomlist.append(False)
+                                while self.randomlist[j]:
+                                        j = j + 1
+                                        if j &gt;= len(self.randomlist):
+                                                j = 0
+                                self.curr_img_in_list = j
+
+
+Jan Vereecke wrote:
+&gt;<i> I run mirage -R  /mnt/Fotos and then immediately start a slideshow by 
+</I>&gt;<i> pressing F5 then regularly I get an exception:
+</I>&gt;<i>
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>   File &quot;/usr/lib/python2.6/site-packages/mirage.py&quot;, line 3532, in 
+</I>&gt;<i> goto_random_image
+</I>&gt;<i>     self.goto_image(&quot;RANDOM&quot;, action)
+</I>&gt;<i>   File &quot;/usr/lib/python2.6/site-packages/mirage.py&quot;, line 3637, in 
+</I>&gt;<i> goto_image
+</I>&gt;<i>     while self.randomlist[j]:
+</I>&gt;<i> IndexError: list index out of range
+</I>&gt;<i>
+</I>&gt;<i> After this exception, self.timer_delay is not reset, so the slideshow stops.
+</I>&gt;<i>
+</I>&gt;<i> The relevant code portion is:
+</I>&gt;<i>    if location == &quot;RANDOM&quot;:
+</I>&gt;<i>                                 # Find random image that hasn't already 
+</I>&gt;<i> been chosen:
+</I>&gt;<i>                                 j = random.randint(0, 
+</I>&gt;<i> len(self.image_list)-1)
+</I>&gt;<i>                                 while self.randomlist[j]:
+</I>&gt;<i>                                         j = random.randint(0, 
+</I>&gt;<i> len(self.image_list)-1)
+</I>&gt;<i>                                 self.curr_img_in_list = j
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> The reason of this error is that the number of pictures in the folders 
+</I>&gt;<i> is over 6000  and is building in the background while the slideshow is 
+</I>&gt;<i> already started.
+</I>&gt;<i>
+</I>&gt;<i> self.randomlist is initialized at a moment when self.imagelist contains 
+</I>&gt;<i> e.g. 500 items, and is thus only 500 items long.
+</I>&gt;<i> a bit later the code above  is reached, but meanwhile self.imagelist has 
+</I>&gt;<i> grown to e.g. 3000 elements, so j can be higher than the maximum index 
+</I>&gt;<i> of self.randomlist.
+</I>&gt;<i>
+</I>&gt;<i> My proposed solution is to let randomlist grow as needed
+</I>&gt;<i>
+</I>&gt;<i>                      if location == &quot;RANDOM&quot;:
+</I>&gt;<i>                                 # Find random image that hasn't already 
+</I>&gt;<i> been chosen:
+</I>&gt;<i>                                 j = random.randint(0, 
+</I>&gt;<i> len(self.image_list)-1)
+</I>&gt;<i>                                 for i in range(len(self.randomlist), 
+</I>&gt;<i> len(self.image_list)): # if image_list has grown in the background, 
+</I>&gt;<i> additional randomlist items are needed
+</I>&gt;<i>                                         self.randomlist.append(False)
+</I>&gt;<i>                                 while self.randomlist[j]:
+</I>&gt;<i>                                         j = random.randint(0, 
+</I>&gt;<i> len(self.image_list)-1)
+</I>&gt;<i>                                         for i in 
+</I>&gt;<i> range(len(self.randomlist), len(self.image_list)):
+</I>&gt;<i>                                                 
+</I>&gt;<i> self.randomlist.append(False)
+</I>&gt;<i>                                 self.curr_img_in_list = j
+</I>&gt;<i>
+</I>&gt;<i> I have had not problem anymore since this change
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mirageiv-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">Mirageiv-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">https://lists.berlios.de/mailman/listinfo/mirageiv-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000077.html">[Mirageiv-users] exception error with large screenshow
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#78">[ date ]</a>
+              <a href="thread.html#78">[ thread ]</a>
+              <a href="subject.html#78">[ subject ]</a>
+              <a href="author.html#78">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

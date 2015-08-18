@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] [PATCH] switch from md5 to hashlib (md5 is	deprecated)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20%5BPATCH%5D%20switch%20from%20md5%20to%20hashlib%20%28md5%20is%0A%09deprecated%29&In-Reply-To=%3C20090329154356.3e083133%40fedoraproject.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000072.html">
+   <LINK REL="Next"  HREF="000074.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] [PATCH] switch from md5 to hashlib (md5 is	deprecated)</H1>
+    <B>Fran&#231;ois Cami</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20%5BPATCH%5D%20switch%20from%20md5%20to%20hashlib%20%28md5%20is%0A%09deprecated%29&In-Reply-To=%3C20090329154356.3e083133%40fedoraproject.org%3E"
+       TITLE="[Mirageiv-users] [PATCH] switch from md5 to hashlib (md5 is	deprecated)">fcami at fedoraproject.org
+       </A><BR>
+    <I>Sun Mar 29 15:43:56 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000072.html">[Mirageiv-users] slideshow loop
+</A></li>
+        <LI>Next message: <A HREF="000074.html">[Mirageiv-users] [PATCH] refreshing the download page
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi,
+
+hashlib was introduced in python 2.5 and deprecates md5 :
+
+/usr/lib64/python2.6/site-packages/mirage.py:32: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import tempfile, socket, md5, threading
+
+The following patch (applies cleanly to 9.3 and to svn 244) switches
+from md5 to hashlib. Tested against Python 2.6 (fedora rawhide).
+
+Signed-off-by: Fran&#231;ois Cami &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">fcami at fedoraproject.org</A>&gt;
+
+
+--- mirage.py-back	2009-03-29 15:12:49.086320677 +0200
++++ mirage.py	2009-03-29 15:13:13.762318694 +0200
+@@ -30,5 +30,5 @@
+ import random, urllib, gobject, gettext, locale
+ import stat, time, subprocess, shutil, filecmp
+-import tempfile, socket, md5, threading
++import tempfile, socket, hashlib, threading
+ try:
+ 	import imgfuncs
+@@ -874,5 +874,5 @@
+ 		filename = os.path.expanduser('<A HREF="file://">file://</A>' + image_name)
+ 		uriname = os.path.expanduser('<A HREF="file://">file://</A>' + urllib.pathname2url(image_name))
+-		m = md5.new()
++		m = hashlib.md5()
+ 		m.update(uriname)
+ 		mhex = m.hexdigest()
+
+
+Alternatively, the following patch switches to hashlib if available,
+otherwise falls back to md5. I like the first patch better because
+it's simpler and faster and I am not aware of any desktop distribution
+still using 2.4.
+Tested against Python 2.6 (fedora rawhide).
+
+Signed-off-by: Fran&#231;ois Cami &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">fcami at fedoraproject.org</A>&gt;
+
+
+--- mirage.py-orig	2009-03-29 15:26:40.044320183 +0200
++++ mirage.py	2009-03-29 15:28:50.457318905 +0200
+@@ -30,5 +30,11 @@
+ import random, urllib, gobject, gettext, locale
+ import stat, time, subprocess, shutil, filecmp
+-import tempfile, socket, md5, threading
++import tempfile, socket, threading
++try:
++	import hashlib
++	HAS_HASHLIB = True
++except:
++	HAS_HASHLIB= False
++	import md5
+ try:
+ 	import imgfuncs
+@@ -874,5 +880,8 @@
+ 		filename = os.path.expanduser('<A HREF="file://">file://</A>' + image_name)
+ 		uriname = os.path.expanduser('<A HREF="file://">file://</A>' + urllib.pathname2url(image_name))
+-		m = md5.new()
++		if HAS_HASHLIB:		
++			m = hashlib.md5()
++		else:
++			m = md5.new()
+ 		m.update(uriname)
+ 		mhex = m.hexdigest()
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000072.html">[Mirageiv-users] slideshow loop
+</A></li>
+	<LI>Next message: <A HREF="000074.html">[Mirageiv-users] [PATCH] refreshing the download page
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

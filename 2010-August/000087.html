@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] Mirage on Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Mirage%20on%20Windows&In-Reply-To=%3CAANLkTikv%3DYgFiSmZR4qaO%3DJ0QVY_G3w%2BParAhYc4RiFt%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] Mirage on Windows</H1>
+    <B>Fredric Johansson</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Mirage%20on%20Windows&In-Reply-To=%3CAANLkTikv%3DYgFiSmZR4qaO%3DJ0QVY_G3w%2BParAhYc4RiFt%40mail.gmail.com%3E"
+       TITLE="[Mirageiv-users] Mirage on Windows">fredricj at users.berlios.de
+       </A><BR>
+    <I>Wed Aug  4 20:17:38 CEST 2010</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#87">[ date ]</a>
+              <a href="thread.html#87">[ thread ]</a>
+              <a href="subject.html#87">[ subject ]</a>
+              <a href="author.html#87">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Jul 29, 2010 at 3:53 PM, Pascal De Vuyst
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">pascal.devuyst at gmail.com</A>&gt; wrote:
+&gt;<i> I'm trying to run mirage in Windows:
+</I>&gt;<i>
+</I>&gt;<i> E:\rev306&gt;python mirage.py
+</I>&gt;<i> mirage_numacomp.so not found, unable to do numerical aware sorting.
+</I>&gt;<i> imgfuncs.so module not found, rotating/flipping images will be disabled.
+</I>&gt;<i> xmouse.so module not found, some screenshot capabilities will be disabled.
+</I>&gt;<i> mirage.py:4521: Warning: GError set over the top of a previous GError or
+</I>&gt;<i> uninitialized memory.
+</I>&gt;<i> This indicates a bug in someone's code. You must ensure an error is NULL
+</I>&gt;<i> before it's set.
+</I>&gt;<i> The overwriting error message was: Couldn't load bitmap
+</I>&gt;<i> &#160; test = gtk.gdk.pixbuf_get_file_info(file)
+</I>&gt;<i> mirage.py:4373: GtkWarning: Unable to retrieve the file info for
+</I>&gt;<i> `<A HREF="file:///E:/rev306/stock_leave-fullscreen.png">file:///E:/rev306/stock_leave-fullscreen.png</A>': Error stating file
+</I>&gt;<i> '\E:\rev306\stock_leave-fullscreen.png': No such file or directory
+</I>
+This doesn't look too well with a path starting with \E:\ instead of E:\
+
+&gt;<i> &#160; gtk.main_iteration(True)
+</I>&gt;<i>
+</I>&gt;<i> The program start but as soon as the next image is loaded I get error
+</I>&gt;<i> dialog:
+</I>&gt;<i> Glib-ERROR (recursed) **: gmem.c:176: failed to allocate 88 bytes
+</I>&gt;<i> aborting ...
+</I>&gt;<i>
+</I>&gt;<i> And following info in command prompt:
+</I>&gt;<i> mirage.py:4202: Warning: g_object_get_qdata: assertion `G_IS_OBJECT
+</I>&gt;<i> (object)' failed
+</I>&gt;<i> &#160; for i in gtk.gdk.window_get_toplevels():
+</I>&gt;<i> mirage.py:4202: Warning: g_type_get_qdata: assertion `node != NULL' failed
+</I>&gt;<i> &#160; for i in gtk.gdk.window_get_toplevels():
+</I>
+This together with...
+
+&gt;<i>
+</I>&gt;<i> I use the following python/gtk/pygtk versions:
+</I>&gt;<i>
+</I>&gt;<i> C:\Documents and Settings\Administrator&gt;python
+</I>&gt;<i> Python 2.6.5 (r265:79096, Mar 19 2010, 21:48:26) [MSC v.1500 32 bit (Intel)]
+</I>&gt;<i> on
+</I>&gt;<i> win32
+</I>&gt;<i> Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+</I>&gt;&gt;&gt;&gt;<i> import gtk
+</I>&gt;&gt;&gt;&gt;<i> gtk.gtk_version
+</I>&gt;<i> (2, 20, 0)
+</I>
+...this makes me think that pygtk 2.16 doesn't work as it should with
+gtk 2.20 unless you get a pygtk compiled against gtk 2.20 since here
+gtk 2.16.6 worked fine.
+
+&gt;&gt;&gt;&gt;<i> gtk.pygtk_version
+</I>&gt;<i> (2, 16, 0)
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Did I forget to install something to make it work?
+</I>
+//Fredric J
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#87">[ date ]</a>
+              <a href="thread.html#87">[ thread ]</a>
+              <a href="subject.html#87">[ subject ]</a>
+              <a href="author.html#87">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>

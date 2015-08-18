@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Mirageiv-users] Mirage 1.0_pre1 released
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mirageiv-users/2012-December/index.html" >
+   <LINK REL="made" HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Mirage%201.0_pre1%20released&In-Reply-To=%3CCA%2BNOQxGW_qo047sgX_uDbPz1FcANipTsTU_uf8zeBRzN%3DRFVNg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000117.html">
+   <LINK REL="Next"  HREF="000119.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Mirageiv-users] Mirage 1.0_pre1 released</H1>
+    <B>Fredric Johansson</B> 
+    <A HREF="mailto:mirageiv-users%40lists.berlios.de?Subject=Re%3A%20%5BMirageiv-users%5D%20Mirage%201.0_pre1%20released&In-Reply-To=%3CCA%2BNOQxGW_qo047sgX_uDbPz1FcANipTsTU_uf8zeBRzN%3DRFVNg%40mail.gmail.com%3E"
+       TITLE="[Mirageiv-users] Mirage 1.0_pre1 released">fredricj at users.berlios.de
+       </A><BR>
+    <I>Mon Dec 10 20:12:15 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000117.html">[Mirageiv-users] Mirage 1.0_pre1 released
+</A></li>
+        <LI>Next message: <A HREF="000119.html">[Mirageiv-users] Mirage 1.0_pre1 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#118">[ date ]</a>
+              <a href="thread.html#118">[ thread ]</a>
+              <a href="subject.html#118">[ subject ]</a>
+              <a href="author.html#118">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Dec 10, 2012 at 8:08 PM, Helmut Jarausch &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mirageiv-users">jarausch at skynet.be</A>&gt; wrote:
+&gt;<i> On 12/10/2012 07:32:53 PM, Fredric Johansson wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Mon, Dec 10, 2012 at 5:37 PM, Helmut Jarausch  wrote:
+</I>&gt;&gt;<i> &gt; On 12/10/2012 12:41:43 PM, Fredric Johansson wrote:
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt; Hi!
+</I>&gt;&gt;<i> &gt;&gt; I did a prerelease of mirage v1.0 to get some wider testing.
+</I>&gt;&gt;<i> &gt;&gt; This prerelease should for instance solve problems with translations
+</I>&gt;&gt;<i> &gt;&gt; not being used.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Hi Fredric,
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; thanks for working on Mirage.
+</I>&gt;&gt;<i> &gt; I've installed this 1.0_pre1 version.
+</I>&gt;&gt;<i> &gt; Unfortunately it fails here with
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; mirage
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Traceback (most recent call last):
+</I>&gt;&gt;<i> &gt;   File &quot;/usr/bin/mirage&quot;, line 30, in &lt;module&gt;
+</I>&gt;&gt;<i> &gt;     app = mirage.Base()
+</I>&gt;&gt;<i> &gt;   File &quot;/usr/lib64/python2.7/site-packages/mirage.py&quot;, line 227, in
+</I>&gt;&gt;<i> &gt; __init__
+</I>&gt;&gt;<i> &gt;     self.read_config_and_set_settings()
+</I>&gt;&gt;<i> &gt;   File &quot;/usr/lib64/python2.7/site-packages/mirage.py&quot;, line 714, in
+</I>&gt;&gt;<i> &gt; read_config_and_set_settings
+</I>&gt;&gt;<i> &gt;     self.bgcolor = gtk.gdk.Color(red=bg['r'], green=bg['g'],
+</I>&gt;&gt;<i> &gt; blue=bg['b'])
+</I>&gt;&gt;<i> &gt; TypeError: list indices must be integers, not str
+</I>&gt;&gt;<i> &gt; zsh: segmentation fault  mirage
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Helmut.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Oops, I dont see how this fell through when I was testing it. I have
+</I>&gt;&gt;<i> uploaded a new prerelease (pre2) which should fix this.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Sorry to tell you that it still doesn't work here.
+</I>&gt;<i> I still get
+</I>
+Oh, sorry forgot to say that you need to remove the config for it to work.
+~/.config/mirage/mirage1.conf
+
+//Fredric
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000117.html">[Mirageiv-users] Mirage 1.0_pre1 released
+</A></li>
+	<LI>Next message: <A HREF="000119.html">[Mirageiv-users] Mirage 1.0_pre1 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#118">[ date ]</a>
+              <a href="thread.html#118">[ thread ]</a>
+              <a href="subject.html#118">[ subject ]</a>
+              <a href="author.html#118">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mirageiv-users">More information about the Mirageiv-users
+mailing list</a><br>
+</body></html>
